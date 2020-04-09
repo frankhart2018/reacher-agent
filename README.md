@@ -4,7 +4,7 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 
 ## Description
 
-<p>The project has two types of environment one with a single agent and the other with twnety (20) agents. Each agent is tasked to follow a green colored ball. If the agent is able to successfully catch up with its corresponding ball then the ball lights up (becomes opaque and turns light green), otherwise it remains transluscent with a dark green color. The environment is part of Unity ML Agents. An agent gets a reward of <b>+0.1</b> for each step that it can successfully follow its corresponding green ball. This environment does not involve a negative reward, in case the agent cannot follow its corresponding ball for a particular step then it does not get a reward (0 reward).
+<p align="justify">The project has two types of environment one with a single agent and the other with twnety (20) agents. Each agent is tasked to follow a green colored ball. If the agent is able to successfully catch up with its corresponding ball then the ball lights up (becomes opaque and turns light green), otherwise it remains transluscent with a dark green color. The environment is part of Unity ML Agents. An agent gets a reward of <b>+0.1</b> for each step that it can successfully follow its corresponding green ball. This environment does not involve a negative reward, in case the agent cannot follow its corresponding ball for a particular step then it does not get a reward (0 reward).
 
 <p>The state space has <b>33</b> dimensions that correspond to position, velocity and angular velocity of an agent. The agent can perform <b>4</b> different actions which correspond to torque applied to the two joints of an agent.</p>
 
