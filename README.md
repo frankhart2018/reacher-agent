@@ -6,15 +6,15 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 
 <p align="justify">The project has two types of environment one with a single agent and the other with twnety (20) agents. Each agent is tasked to follow a green colored ball. If the agent is able to successfully catch up with its corresponding ball then the ball lights up (becomes opaque and turns light green), otherwise it remains transluscent with a dark green color. The environment is part of Unity ML Agents. An agent gets a reward of <b>+0.1</b> for each step that it can successfully follow its corresponding green ball. This environment does not involve a negative reward, in case the agent cannot follow its corresponding ball for a particular step then it does not get a reward (0 reward).
 
-<p>The state space has <b>33</b> dimensions that correspond to position, velocity and angular velocity of an agent. The agent can perform <b>4</b> different actions which correspond to torque applied to the two joints of an agent.</p>
+<p align="justify">The state space has <b>33</b> dimensions that correspond to position, velocity and angular velocity of an agent. The agent can perform <b>4</b> different actions which correspond to torque applied to the two joints of an agent.</p>
 
 <p>The agent's task is episodic and is solved when the agent gets atleast <b>+30</b> over consecutive <b>100</b> episodes.</p>
 
 <p>For this task I used a Deep Deterministic Policy Gradeints (DDPG) which is an Actor-Critic method.</p>
 
-<p>The Actor model takes as input the current 33 dimensional state and passed through <b>two (2)</b> layers of multi layered perceptron with <b>ReLU</b> activation followed by an output layer with <b>four (4)</b> nodes each activated with <b>tanh</b> activation which gives the action to take at the current state.</p>
+<p align="justify">The Actor model takes as input the current 33 dimensional state and passed through <b>two (2)</b> layers of multi layered perceptron with <b>ReLU</b> activation followed by an output layer with <b>four (4)</b> nodes each activated with <b>tanh</b> activation which gives the action to take at the current state.</p>
 
-<p>The Critic model takes as input the current 33 dimensional state and the 4 dimensional action which is passed through <b>two (2)</b> layers of multi-layered perceptron with <b>ReLU</b> activation. After the first layer's activation is computed then only the actions are given as input, so the actions are passed from the second layer. The final layer has a single node activated with <b>linear</b> activation which gives the Q-value for the corresponding (state, action) pair.</p>
+<p align="justify">The Critic model takes as input the current 33 dimensional state and the 4 dimensional action which is passed through <b>two (2)</b> layers of multi-layered perceptron with <b>ReLU</b> activation. After the first layer's activation is computed then only the actions are given as input, so the actions are passed from the second layer. The final layer has a single node activated with <b>linear</b> activation which gives the Q-value for the corresponding (state, action) pair.</p>
 
 ## Demo
 
