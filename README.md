@@ -45,12 +45,21 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
   ```
   
   </li>
-  <li>Download your OS specific unity environment:
+  <li>Download your OS specific unity environment (single agent):
     <ul>
-      <li>Linux: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip'>click here</a></li><br>
-      <li>MacOS: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip'>click here</a></li><br>
-      <li>Windows (32 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip'>click here</a></li><br>
-      <li>Windows (64 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip'>click here </a></li><br>
+      <li>Linux: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Linux.zip'>click here</a></li><br>
+      <li>MacOS: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher.app.zip'>click here</a></li><br>
+      <li>Windows (32 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86.zip'>click here</a></li><br>
+      <li>Windows (64 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86_64.zip'>click here </a></li><br>
+    </ul>
+  </li>
+  
+  <li>Download your OS specific unity environment (twenty agents):
+    <ul>
+      <li>Linux: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip'>click here</a></li><br>
+      <li>MacOS: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip'>click here</a></li><br>
+      <li>Windows (32 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip'>click here</a></li><br>
+      <li>Windows (64 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip'>click here </a></li><br>
     </ul>
   </li>
   
@@ -62,8 +71,9 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
   user@programmer:~$ jupyter-notebook
   ```
   
-  :arrow_right: For re-training the agent use <b>Banana Collecting Agent.ipynb</b><br><br>
-  :arrow_right: For testing the agent use <b>Banana Agent Tester.ipynb</b><br><br>
+  :arrow_right: For re-training the agent use <b>Reacher Agent.ipynb</b><br><br>
+  :arrow_right: For testing twenty agents use <b>Reacher Tester.ipynb</b><br><br>
+  :arrow_right: For testing a single agent use <b>Reacher Tester One Agent.ipynb</b><br><br>
   
   In case you like to run a python script use:<br>
   
@@ -73,10 +83,16 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
   user@programmer:~$ python train.py
   ```
   
-  :arrow_right: For testing the agent use:<br>
+  :arrow_right: For testing twenty agents use:<br>
   
   ```console
   user@programmer:~$ python test.py
+  ```
+  
+  :arrow_right: For testing a single agent use:<br>
+  
+  ```console
+  user@programmer:~$ python test-one.py
   ```
   
   </li>
@@ -95,14 +111,16 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 
 <ol>
   <li>Multi Layered Perceptron.</li>
-  <li>Deep Q-Network. To learn more about this algorithm you can read the original paper by <b>DeepMind</b>: <a href='https://web.stanford.edu/class/psych209/Readings/MnihEtAlHassibis15NatureControlDeepRL.pdf'>Human-level control through deep reinforcement learning</a></li>
+  <li>Deep Deterministic Policy Gradients. To learn more about this algorithm you can read the original paper by <b>DeepMind</b>: <a href='https://arxiv.org/pdf/1509.02971.pdf'>Continuous Control with Deep Reinforcement Learning</a></li>
 </ol>
 
 ## Model description
 
-<p>The Q-Network has three dense (or fully connected layers). The first two layers have <b>64</b> nodes activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with linear activation (or no activation at all). This network takes in as input the <b>37</b> dimensional current state and gives as output <b>4</b> action-values corresponding to the possible actions that the agent can take.</p>
+<p>The Actor Network has three dense (or fully connected layers). The first two layers have <b>400 and 300</b> nodes respectively activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with tanh activation. This network takes in as input the <b>33</b> dimensional current state and gives as output <b>4</b> to provide the action at current state that the agent is supposed to take.</p>
 
-<p>The neural network used Adam optimizer and Mean Squared Error (MSE) as the loss function.</p>
+<p>The Critic Network has three dense (or fully connected layers). The first two layers have <b>400 and 304</b> nodes respectively activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with linear activation (no activation at all). This network takes in as input the <b>33</b> dimensional current state and <b>4</b> dimensional action and gives as output a single real number to provide the Q-value at current state and action taken in that state.</p>
+
+<p>Both of the neural networks used Adam optimizer and Mean Squared Error (MSE) as the loss function.</p>
 
 <p>The following image provides a pictorial representation of the Q-Network model:</p>
 
@@ -121,11 +139,8 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 | Hyperparameter           | Value  | Description                                               |
 |--------------------------|--------|-----------------------------------------------------------|
 | Buffer size              | 100000 | Maximum size of the replay buffer                         |
-| Batch size               | 64     | Batch size for sampling from replay buffer                |
+| Batch size               | 128    | Batch size for sampling from replay buffer                |
 | Gamma (<b>γ</b>)         | 0.99   | Discount factor for calculating return                    |
 | Tau (<b>τ</b>)           | 0.001  | Hyperparameter for soft update of target parameters       |
-| Learning Rate (<b>α</b>) | 0.0005 | Learning rate for the neural networks                     |
-| Update Every (<b>C</b>)  | 4      | Number of time steps after which soft update is performed |
-| Epsilon (<b>ε</b>)       | 1.0    | For epsilon-greedy action selection                       |
-| Epsilon decay rate       | 0.995  | Rate by which epsilon decays after every episode          |
-| Epsilon minimum          | 0.01   | The minimum value of epsilon                              |
+| Learning Rate Actor      | 0.0003 | Learning rate for the actor neural network                |
+| Learning Rate Critic     | 0.001  | Learning rate for the critic neural network               |
