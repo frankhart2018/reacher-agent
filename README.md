@@ -32,18 +32,18 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 
 <ol>
   <li>Clone the repository:<br><br>
-  
+
   ```console
   user@programer:~$ git clone https://github.com/frankhart2018/reacher-agent
   ```
-  
+
   </li>
   <li>Install the requirements:<br><br>
-  
+
   ```console
   user@programmer:~$ pip install requirements.txt
   ```
-  
+
   </li>
   <li>Download your OS specific unity environment (single agent):
     <ul>
@@ -53,7 +53,7 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
       <li>Windows (64 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/one_agent/Reacher_Windows_x86_64.zip'>click here </a></li><br>
     </ul>
   </li>
-  
+
   <li>Download your OS specific unity environment (twenty agents):
     <ul>
       <li>Linux: <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip'>click here</a></li><br>
@@ -62,39 +62,39 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
       <li>Windows (64 bit): <a href='https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip'>click here </a></li><br>
     </ul>
   </li>
-  
+
   <li>Update the banana app location according to your OS in the mentioned placed.</li>
   <li>Unzip the downloaded environment file</li><br>
   <li>If you prefer using jupyter notebook then launch the jupyter notebook instance:<br><br>
-  
+
   ```console
   user@programmer:~$ jupyter-notebook
   ```
-  
+
   :arrow_right: For re-training the agent use <b>Reacher Agent.ipynb</b><br><br>
   :arrow_right: For testing twenty agents use <b>Reacher Tester.ipynb</b><br><br>
   :arrow_right: For testing a single agent use <b>Reacher Tester One Agent.ipynb</b><br><br>
-  
+
   In case you like to run a python script use:<br>
-  
+
   :arrow_right: For re-training the agent type:<br>
-  
+
   ```console
   user@programmer:~$ python train.py
   ```
-  
+
   :arrow_right: For testing twenty agents use:<br>
-  
+
   ```console
   user@programmer:~$ python test.py
   ```
-  
+
   :arrow_right: For testing a single agent use:<br>
-  
+
   ```console
   user@programmer:~$ python test-one.py
   ```
-  
+
   </li>
 </ol>
 
@@ -118,14 +118,20 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 
 <p align="justify">The Actor Network has three dense (or fully connected layers). The first two layers have <b>400 and 300</b> nodes respectively activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with tanh activation. This network takes in as input the <b>33</b> dimensional current state and gives as output <b>4</b> to provide the action at current state that the agent is supposed to take.</p>
 
-<p align="justify">The Critic Network has three dense (or fully connected layers). The first two layers have <b>400 and 304</b> nodes respectively activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with linear activation (no activation at all). This network takes in as input the <b>33</b> dimensional current state and <b>4</b> dimensional action and gives as output a single real number to provide the Q-value at current state and action taken in that state.</p>
+<p align="justify">The Critic Network has three dense (or fully connected layers). The first two layers have <b>404 and 300</b> nodes respectively activated with <b>ReLU</b> activation function. The final (output layer) has <b>4</b> nodes and is activated with linear activation (no activation at all). This network takes in as input the <b>33</b> dimensional current state and <b>4</b> dimensional action and gives as output a single real number to provide the Q-value at current state and action taken in that state.</p>
 
 <p>Both of the neural networks used Adam optimizer and Mean Squared Error (MSE) as the loss function.</p>
 
-<p>The following image provides a pictorial representation of the Q-Network model:</p>
+<p>The following image provides a pictorial representation of the Actor Network model:</p>
 
 <p align='center'>
-  <img src='images/q-network.png' alt='Pictorial representation of Q-Network'>
+  <img src='images/actor-network.png' alt='Pictorial representation of Q-Network'>
+</p>
+
+<p>The following image provides a pictorial representation of the Critic Network model:</p>
+
+<p align='center'>
+  <img src='images/critic-network.png' alt='Pictorial representation of Q-Network'>
 </p>
 
 <p>The following image provides the plot for score v/s episode number:</p>
